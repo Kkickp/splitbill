@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Split Bill</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="background-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+    </div>
+
+    <main class="container glass-panel">
+      <header>
+        <h1>💸 Smart Split</h1>
+        <p>Bagi tagihan dengan adil secara otomatis</p>
+      </header>
+
+      <section class="config-section">
+        <div class="input-group">
+          <label for="apiKey">Gemini API Key</label>
+          <input
+            type="password"
+            id="apiKey"
+            placeholder="Masukkan API Key Google Gemini Anda..."
+            autocomplete="off"
+          />
+          <small>Disimpan secara lokal di browser Anda.</small>
+        </div>
+      </section>
+
+      <section class="upload-section">
+        <div class="file-drop-area" id="dropArea">
+          <span class="file-msg">Pilih foto nota atau tarik ke sini</span>
+          <input
+            class="file-input"
+            type="file"
+            id="receiptImage"
+            accept="image/*"
+          />
+        </div>
+        <div id="imagePreviewContainer" class="hidden">
+          <img id="imagePreview" src="" alt="Preview Nota" />
+          <button id="removeImageBtn" class="btn-secondary">Ganti Foto</button>
+        </div>
+      </section>
+
+      <section class="orders-section">
+        <h2>Daftar Pesanan</h2>
+        <div id="personsList">
+          <!-- Person item template -->
+          <div class="person-item">
+            <input
+              type="text"
+              class="person-name"
+              placeholder="Nama (mis: Budi)"
+              required
+            />
+            <input
+              type="text"
+              class="person-orders"
+              placeholder="Pesanan (mis: Nasi Goreng, Es Teh)"
+              required
+            />
+            <button class="remove-person-btn" aria-label="Hapus">
+              &times;
+            </button>
+          </div>
+        </div>
+        <button id="addPersonBtn" class="btn-secondary">+ Tambah Orang</button>
+      </section>
+
+      <button id="calculateBtn" class="btn-primary">
+        <span id="calcBtnText">Hitung Tagihan</span>
+        <span id="calcSpinner" class="loader hidden"></span>
+      </button>
+
+      <section id="resultSection" class="result-section hidden">
+        <h2>Rincian Tagihan</h2>
+        <div id="resultContent"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
