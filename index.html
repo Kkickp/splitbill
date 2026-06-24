@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css?v=5" />
   </head>
   <body>
     <div class="background-blobs">
@@ -20,37 +20,23 @@
 
     <main class="container glass-panel">
       <header>
-        <h1>💸 Smart Split</h1>
-        <p>Bagi tagihan dengan adil secara otomatis</p>
+        <h1>Split Bill</h1>
       </header>
 
-      <section class="config-section">
-        <div class="input-group">
-          <label for="apiKey">Gemini API Key</label>
-          <input
-            type="password"
-            id="apiKey"
-            placeholder="Masukkan API Key Google Gemini Anda..."
-            autocomplete="off"
-          />
-          <small>Disimpan secara lokal di browser Anda.</small>
+      <section class="receipt-details-section">
+        <h2 style="font-size: 1.2rem; margin-bottom: 1rem;">Detail Tambahan Nota</h2>
+        <div class="input-group" style="margin-bottom: 1rem;">
+          <label for="receiptDiscount">Diskon (Rp)</label>
+          <input type="number" id="receiptDiscount" placeholder="Misal: 5000" min="0" />
         </div>
-      </section>
+        
+        <hr style="border:0; border-top: 1px dashed var(--border-color); margin: 1.5rem 0 1rem 0;">
+        <h3 style="font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--text-main);">Biaya Tambahan Lainnya</h3>
+        <div id="extraFeesList" style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom: 1rem;">
+            <!-- Dynamic extra fee items will go here -->
+        </div>
+        <button id="addExtraFeeBtn" type="button" class="btn-secondary" style="font-size: 0.85rem; background: transparent; border: 1px dashed var(--border-color); color: var(--primary);">+ Tambah Biaya Lainnya (Pajak, Ongkir, dll)</button>
 
-      <section class="upload-section">
-        <div class="file-drop-area" id="dropArea">
-          <span class="file-msg">Pilih foto nota atau tarik ke sini</span>
-          <input
-            class="file-input"
-            type="file"
-            id="receiptImage"
-            accept="image/*"
-          />
-        </div>
-        <div id="imagePreviewContainer" class="hidden">
-          <img id="imagePreview" src="" alt="Preview Nota" />
-          <button id="removeImageBtn" class="btn-secondary">Ganti Foto</button>
-        </div>
       </section>
 
       <section class="orders-section">
@@ -65,20 +51,21 @@
               required
             />
             <input
-              type="text"
-              class="person-orders"
-              placeholder="Pesanan (mis: Nasi Goreng, Es Teh)"
+              type="number"
+              class="person-subtotal"
+              placeholder="Total Harga Makanan (mis: 50000)"
+              min="0"
               required
             />
-            <button class="remove-person-btn" aria-label="Hapus">
+            <button class="remove-person-btn" type="button" aria-label="Hapus">
               &times;
             </button>
           </div>
         </div>
-        <button id="addPersonBtn" class="btn-secondary">+ Tambah Orang</button>
+        <button id="addPersonBtn" type="button" class="btn-secondary">+ Tambah Orang</button>
       </section>
 
-      <button id="calculateBtn" class="btn-primary">
+      <button id="calculateBtn" type="button" class="btn-primary">
         <span id="calcBtnText">Hitung Tagihan</span>
         <span id="calcSpinner" class="loader hidden"></span>
       </button>
@@ -89,6 +76,6 @@
       </section>
     </main>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=5"></script>
   </body>
 </html>
