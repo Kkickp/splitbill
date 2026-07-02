@@ -899,7 +899,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Month navigation (Rekap tab)
-  $$('.month-nav-btn').forEach(btn => {
+  $$('#view-rekap .month-nav-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const dir = btn.dataset.dir;
       let month = selectedDate.getMonth();
